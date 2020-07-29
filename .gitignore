@@ -1,0 +1,8 @@
+.classpath
+.project
+/NewMessenger/.settings
+/NewMessenger/target
+/NewMessenger/.mvn
+/NewMessenger/.project
+mvnw.cmd
+mvnw
