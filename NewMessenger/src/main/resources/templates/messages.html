@@ -6,12 +6,12 @@
 </head>
 <body>
 
-	<form action="" method="post">
-		<label for="username" >Text:</label>
+	<form action="" method="post" style="margin-bottom: 1em;">
+		<label for="text" >Text:</label>
 		<div >
 			<input type="text" id="text" name="text" />
 		</div>
-		<label for="password" >Tag:</label>
+		<label for="tag" >Tag:</label>
 		<div >
 			<input type="text" id="tag" name="tag" />
 		</div>
@@ -19,5 +19,19 @@
 			<button type="submit" >Save</button>
 		</div>
 	</form>
+	<form action="/filter" method="post">
+		<label for="filter" >Filter:</label>
+		<div >
+			<input type="text" id="filter" name="filter" />
+		</div>
+		<div >
+			<button type="submit" >Filter</button>
+		</div>
+	</form>
+	
+	<div th:each="message:${messages}" >
+		 <b th:text="${message.id}">Some</b> <span th:text="${message.text}">Some</span>
+		 <i th:text="${message.tag}">Some</i>
+	</div>
 </body>
 </html>
