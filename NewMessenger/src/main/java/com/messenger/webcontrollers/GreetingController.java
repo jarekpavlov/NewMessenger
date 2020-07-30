@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class GreetingController {
 	
-	@GetMapping("/greeting")
-	public  String getGreetingPage(@RequestParam(name="name",required = false, defaultValue = "Me") String name, ModelMap model) {
+	@GetMapping("/")
+	public  String getGreetingPage(@RequestParam(name="name",required = false, defaultValue = "User") String name, ModelMap model) {
 		
 		model.put("name", name);
 		return "greetingpage";

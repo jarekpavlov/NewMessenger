@@ -43,12 +43,10 @@ public class ViewMessages {
 		List<Message> list;
 		if(!filter.isEmpty()) {
 			list=messageRepo.findByTag(filter);
-			
 		}else {
 			list=messageRepo.findAll();
 			  }
 		model.put("messages", list);
-		
 		return "messages";
 		
 	}
