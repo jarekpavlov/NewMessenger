@@ -9,9 +9,9 @@ import javax.persistence.Id;
 @Entity
 public class Message {
 	
-	Long id;
-	String text;
-	String tag;
+	private Long id;
+	private String text;
+	private String tag;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

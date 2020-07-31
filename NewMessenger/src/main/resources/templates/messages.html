@@ -37,5 +37,8 @@
 		 <b th:text="${message.id}">Some</b> <span th:text="${message.text}">Some</span>
 		 <i th:text="${message.tag}">Some</i>
 	</div>
+	<form th:action="@{/logout}" method="post">
+            <input type="submit" value="Sign Out"/>
+    </form>
 </body>
 </html>
