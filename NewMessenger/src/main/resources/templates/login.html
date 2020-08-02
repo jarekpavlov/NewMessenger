@@ -3,6 +3,16 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
     <head>
         <title>Login </title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		$(function(){
+			$("#register").click(function(){
+				window.location.href="/registration"
+			});
+		});
+	</script>
     </head>
     <body>
         <div th:if="${param.error}">
@@ -18,5 +28,8 @@
             <div><label> Password: <input type="password" name="password"/> </label></div>
             <div><input type="submit" value="Sign In"/></div>
         </form>
+        <div>
+        	<button type="button" id="register" >Register</button>
+        </div>
     </body>
 </html>

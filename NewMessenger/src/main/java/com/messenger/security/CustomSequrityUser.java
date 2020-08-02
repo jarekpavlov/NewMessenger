@@ -20,19 +20,19 @@ public class CustomSequrityUser extends User implements UserDetails {
 		this.setUsername(user.getUsername());
 		
 	}
-    @Override
-	public Set<Authority> getAuthorities() {
-		return super.getAuthorities();
-	}
-
-    @Override
-    public String getPassword() {
-    	return super.getPassword();
-    }
-    @Override
-    public String getUsername() {
-    	return super.getUsername();
-    }
+//    @Override
+//	public Set<Authority> getAuthorities() {      ////the text is redundant but may be needed in other variations of code
+//		return super.getAuthorities();
+//	}
+//
+//    @Override
+//    public String getPassword() {
+//    	return super.getPassword();
+//    }
+//    @Override
+//    public String getUsername() {
+//    	return super.getUsername();
+//    }
    
 	@Override
 	public boolean isAccountNonExpired() {
