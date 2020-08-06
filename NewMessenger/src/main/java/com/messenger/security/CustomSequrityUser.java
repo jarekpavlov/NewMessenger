@@ -1,6 +1,5 @@
 package com.messenger.security;
 
-import java.util.Set;
 
 import org.springframework.security.core.userdetails.UserDetails;
 

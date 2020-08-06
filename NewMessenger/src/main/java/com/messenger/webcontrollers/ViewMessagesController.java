@@ -13,7 +13,7 @@ import com.messenger.domain.Message;
 import com.messenger.repositories.MessageRepo;
 
 @Controller
-public class ViewMessages {
+public class ViewMessagesController {
 	
 	@Autowired
 	MessageRepo messageRepo;
@@ -38,8 +38,8 @@ public class ViewMessages {
 		
 	}
 	
-	@PostMapping("/filter")
-	public String filter(ModelMap model, @RequestParam(required = false) String filter) {
+	@GetMapping("/filter")
+	public String filter(ModelMap model,  @RequestParam(required = false, defaultValue = "") String filter) {
 		List<Message> list;
 		if(!filter.isEmpty()) {
 			list=messageRepo.findByTag(filter);
@@ -47,6 +47,7 @@ public class ViewMessages {
 			list=messageRepo.findAll();
 			  }
 		model.put("messages", list);
+		model.put("filter",filter);
 		return "messages";
 		
 	}
