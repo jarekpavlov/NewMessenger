@@ -3,6 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Messages</title>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+			integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs="
+			crossorigin="anonymous"></script>
+		<script type="text/javascript">
+		$(function(){
+			$("#toUsers").click(function(){
+				window.location.href="/users"
+			});
+		});
+	</script>
 </head>
 <body>
 
@@ -39,5 +49,9 @@
 	<form th:action="@{/logout}" method="post">
             <input type="submit" value="Sign Out"/>
     </form>
+   	<div >
+		<button type="button" id="toUsers" >List Of Users</button>
+	</div>
+    
 </body>
 </html>
