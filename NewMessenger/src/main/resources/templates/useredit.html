@@ -22,12 +22,12 @@
 				</div>
 				<div class="col-3">
 				   <div class="custom-control custom-switch ">
-					  <input type="checkbox" class="custom-control-input" >
-					  <label class="custom-control-label" for="published1">User Role</label>
+					  <input type="checkbox" class="custom-control-input" th:checked="${userRole}" >
+					  <label class="custom-control-label" >User Role</label>
 					</div>
 					<div class="custom-control custom-switch ">
-					  <input type="checkbox" class="custom-control-input" >
-					  <label class="custom-control-label" for="published1">Administrator Role</label>
+					  <input type="checkbox" class="custom-control-input" th:checked="${adminRole}" >
+					  <label class="custom-control-label" >Administrator Role</label>
 					</div>
 				</div>
 			</div>
