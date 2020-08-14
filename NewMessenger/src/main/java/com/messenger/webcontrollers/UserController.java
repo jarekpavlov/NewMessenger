@@ -7,11 +7,13 @@ import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.messenger.domain.RolesBoolean;
 import com.messenger.domain.User;
 import com.messenger.repositories.UserRepo;
 import com.messenger.security.Authority;
@@ -21,7 +23,7 @@ public class UserController {
 	
 	@Autowired
 	UserRepo userRepo;
-	
+
 	
 	@GetMapping("/users")
 	public String getUsers(ModelMap model) {
@@ -40,34 +42,51 @@ public class UserController {
 		if (userOpt.isPresent()) {
 			user = userOpt.get();
 			}
-
-		Set<Authority> authoritys = user.getAuthorities();
 		
+		Set<Authority> authoritys = user.getAuthorities();
 		String roleUser = "ROLE_USER";
 		String roleAdmin = "ROLE_ADMIN";
-		boolean hasUserRole= false;
-		boolean hasAdminRole = false;
+
+		RolesBoolean rolesBoolean = new RolesBoolean();
+		rolesBoolean.setUserRole(false);
+		rolesBoolean.setAdminRole(false);
 		
 		for (Authority authority:authoritys) {
 			String authorityStr = authority.getAuthority();
 			
 			if (authorityStr.equals(roleUser)) {
-				hasUserRole=true;
+				rolesBoolean.setUserRole(true);
 			}
-			
 			if (authorityStr.equals(roleAdmin)) {
-				hasAdminRole=true;
+				rolesBoolean.setAdminRole(true);
 			}
-			
 		}
-		System.out.println(hasUserRole);
-		System.out.println(hasAdminRole);
-		
-
-		model.put("userRole", hasUserRole);
-		model.put("adminRole", hasAdminRole);
+		model.put("rolesBoolean", rolesBoolean);
 		model.put("user", user);
+		
 		return "useredit";
+	}
+	@PostMapping("/users/{userId}")
+	public String saveUser( @PathVariable Long userId, User user, RolesBoolean rolesBoolean ) {
+		
+		
+		Authority userRole = new Authority();
+		Authority adminRole = new Authority();
+
+		if(rolesBoolean.isUserRole()) {
+			userRole.setAuthority("ROLE_USER");
+			userRole.setUser(user);
+			user.getAuthorities().add(userRole);
+		}
+		if(rolesBoolean.isAdminRole()) {
+			adminRole.setAuthority("ROLE_ADMIN");
+			adminRole.setUser(user);
+			user.getAuthorities().add(adminRole);
+		}
+		
+		userRepo.save(user);
+		
+		return "redirect:/users";
 	}
 	
 	
