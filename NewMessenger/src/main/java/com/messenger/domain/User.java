@@ -52,7 +52,7 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "user")
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER,mappedBy = "user", orphanRemoval = true)
 	public Set<Authority> getAuthorities() {
 		return authorities;
 	}

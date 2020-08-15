@@ -84,6 +84,12 @@ public class UserController {
 			user.getAuthorities().add(adminRole);
 		}
 		
+		Optional <User> userOpt = userRepo.findById(userId);
+		if (userOpt.isPresent()) {
+			User userTemp = userOpt.get();
+			userTemp.getAuthorities().clear();
+			userRepo.save(userTemp);
+		}
 		userRepo.save(user);
 		
 		return "redirect:/users";
