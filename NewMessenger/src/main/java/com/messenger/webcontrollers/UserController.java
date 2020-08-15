@@ -1,6 +1,6 @@
 package com.messenger.webcontrollers;
 
-import java.util.HashSet;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -11,7 +11,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+
 
 import com.messenger.domain.RolesBoolean;
 import com.messenger.domain.User;
@@ -84,12 +84,6 @@ public class UserController {
 			user.getAuthorities().add(adminRole);
 		}
 		
-		Optional <User> userOpt = userRepo.findById(userId);
-		if (userOpt.isPresent()) {
-			User userTemp = userOpt.get();
-			userTemp.getAuthorities().clear();
-			userRepo.save(userTemp);
-		}
 		userRepo.save(user);
 		
 		return "redirect:/users";
