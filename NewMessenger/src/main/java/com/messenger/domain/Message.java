@@ -12,6 +12,7 @@ public class Message {
 	private Long id;
 	private String text;
 	private String tag;
+	private String fileName;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -34,6 +35,12 @@ public class Message {
 	}
 	public void setTag(String tag) {
 		this.tag = tag;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
 	}
 	
 	
