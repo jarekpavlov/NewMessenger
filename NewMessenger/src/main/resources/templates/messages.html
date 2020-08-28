@@ -21,7 +21,6 @@
 	<div>
 		<input type="file"  name="file">
 	</div>	
-	<img src="/imag/SiemensPic.png">	
 		<label for="text" >Text:</label>
 		<div >
 			<input type="text" id="text" name="text" />
@@ -48,9 +47,9 @@
 	<div th:each="message:${messages}" >
 		 <b th:text="${message.id}">Some</b> <span th:text="${message.text}">Some</span>
 		 <i th:text="${message.tag}">Some</i>
-<!-- 		 <div th:if="${message.fileName !=null}"> -->
-<!-- 			<img src="/images/${message.fileName}"> -->
-<!-- 		</div> -->
+		 <div th:if="${message.fileName !=null}">
+			<img th:src="@{'/imag/'+${message.fileName}}">
+		</div>
 	</div>
 
 	<form th:action="@{/logout}" method="post">

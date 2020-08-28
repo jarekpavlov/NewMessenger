@@ -51,7 +51,7 @@ public class ViewMessagesController {
 				uploadDir.mkdir();
 			}
 			String uuidFile=UUID.randomUUID().toString();
-			String resultFileName=uuidFile+"."+file.getOriginalFilename();
+			String resultFileName=uuidFile+"DD"+file.getOriginalFilename();
 			
 			file.transferTo(new File(uploadPath+"/"+resultFileName));
 			
