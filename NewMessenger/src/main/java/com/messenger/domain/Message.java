@@ -5,6 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Message {
@@ -13,6 +14,7 @@ public class Message {
 	private String text;
 	private String tag;
 	private String fileName;
+	private User user;
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -42,6 +44,14 @@ public class Message {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
+	@ManyToOne
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 	
 	
 

@@ -24,6 +24,7 @@ public class User {
 	private String username;
 	private String password;
 	private Set<Authority> authorities = new HashSet<>();
+	private Set<Message> messages = new HashSet<>();
 	
 	
 	@Id
@@ -59,5 +60,13 @@ public class User {
 	public void setAuthorities(Set<Authority> authorities) {
 		this.authorities = authorities;
 	}
+	@OneToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY, mappedBy = "user")
+	public Set<Message> getMessages() {
+		return messages;
+	}
+	public void setMessages(Set<Message> messages) {
+		this.messages = messages;
+	}
+	
 	
 }

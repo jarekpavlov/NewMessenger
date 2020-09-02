@@ -3,15 +3,29 @@
 <head>
 <meta charset="UTF-8">
 <title>Registration</title>
+<script th:replace="fragment/header :: header"></script>
 </head>
 <body>
-	<h2>Registration</h2>
-    <form action="" method="post">
-       <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
-           <div><label> User Name : <input type="text" th:field="${user.username}"/> </label></div>
-           <div><label> Name : <input type="text" th:field="${user.name}"/> </label></div>
-           <div><label> Password: <input type="password" th:field="${user.password}"/> </label></div>
-           <div><input type="submit" value="Register"/></div>
-       </form>
+	<div class="container" style="margin-top: 1.5 em; margin-left: 1 em">
+		<h2>Registration</h2>
+	    <form action="" method="post">
+	       	   <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+	           <div class="form-group row">
+		           <label class="col-sm-3 col-md-2 col-form-lable" for="userName"> User Name : </label> 
+		           <input class="col-sm-9 col-md-10" id="userName" type="text" th:field="${user.username}"/>
+	           </div>
+	           <div class="form-group row">
+	          	 <label class="col-sm-3 col-md-2 col-form-lable" for="name"> Name :  </label>
+	          	 <input class="col-sm-9 col-md-10" id="name" type="text" th:field="${user.name}"/> 
+	           </div>
+	           <div class="form-group row">
+		           <label class="col-sm-3 col-md-2 col-form-lable" for="password"> Password: </label>
+		           <input class="col-sm-9 col-md-10" id="password" type="password" th:field="${user.password}"/> 
+	           </div>
+	           <div>
+	          		 <button  class="btn btn-info" type="submit" >Register</button>
+	           </div>
+	     </form>
+	</div>
 </body>
 </html>

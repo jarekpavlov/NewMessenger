@@ -43,6 +43,7 @@ public class ViewMessagesController {
 		Message newMessage = new Message();
 		newMessage.setText(text);
 		newMessage.setTag(tag);
+		newMessage.setUser(user);
 		
 		if(file!=null) {
 			File uploadDir=new File(uploadPath);
